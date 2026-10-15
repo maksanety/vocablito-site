@@ -1,8 +1,13 @@
-:root{--bg:#F7F4EF;--card:#fff;--text:#1C1B19;--muted:#6E6A63;--accent:#C9500A}
-@media (prefers-color-scheme:dark){:root{--bg:#0E0E0F;--card:#1B1B1D;--text:#F4F2EE;--muted:#A19D96;--accent:#FF8A3D}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-main{max-width:720px;margin:0 auto;padding:48px 16px 64px}
-.hero{text-align:center}.hero img{width:120px;height:120px;border-radius:28px;box-shadow:0 12px 30px rgba(201,80,10,.25)}
-h1{font-size:40px;margin:16px 0 4px}h2{margin-top:32px}.muted{color:var(--muted)}
-.card{background:var(--card);border-radius:18px;padding:20px;margin:16px 0}
-ul{padding-left:20px}a{color:var(--accent)}nav{text-align:center;margin-top:40px}nav a{margin:0 10px}
+:root{--bg:#F7F4EF;--card:#fff;--text:#1B1612;--muted:#6E665D;--accent:#C9500A;--line:rgba(27,22,18,.09)}
+@media (prefers-color-scheme:dark){:root{--bg:#14100D;--card:#241C16;--text:#F6F1EA;--muted:#B3A99D;--accent:#FF8A3D;--line:rgba(255,255,255,.09)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:500 17px/1.6 Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.bar{position:sticky;top:0;padding:14px 16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 75%,transparent);border-bottom:1px solid var(--line)}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:700 18px Unbounded,sans-serif;max-width:720px}
+.brand img{border-radius:9px}
+main{max-width:720px;margin:0 auto;padding:40px 16px 64px}
+h1{font:700 clamp(30px,6vw,44px)/1.15 Unbounded,sans-serif;letter-spacing:-.02em;margin:8px 0 6px}
+h2{font-size:20px;margin:28px 0 8px}.card h2:first-child{margin-top:0}
+.muted{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;margin:18px 0}
+a{color:var(--accent);font-weight:700}nav{text-align:center;margin-top:40px}nav a{margin:0 12px;text-decoration:none}

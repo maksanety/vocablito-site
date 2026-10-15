@@ -1,12 +1,190 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vocablito: іспанські слова з уроків</title><meta name="description" content="Vocablito допомагає запам’ятати іспанські слова з уроків: 5 хвилин на день, інтервальні повторення, квіз і синоніми.">
-<link rel="icon" href="icon.png"><link rel="stylesheet" href="style.css"></head><body><main>
-<div class="hero"><img src="icon.png" alt="Vocablito"><h1>Vocablito</h1><p class="muted">Іспанські слова з уроків, які залишаються в пам’яті</p></div>
-<div class="card"><ul>
-<li>Додаєш слово за секунду: наголос і переклад з’являються самі.</li>
-<li>Блокнот для уроку: пишеш слова, усе зберігається само.</li>
-<li>Щодня коротке тренування: лише дві кнопки, «пам’ятаю» чи «не пам’ятаю».</li>
-<li>Квіз, синоніми, озвучка і прогрес.</li></ul></div>
-<p class="muted" style="text-align:center">Незабаром в App Store. Інтерфейс українською, російською, англійською та іспанською.</p>
-<nav><a href="privacy.html">Конфіденційність / Privacy</a><a href="support.html">Підтримка / Support</a></nav>
-</main></body></html>
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vocablito: слова з уроку, які залишаються в голові</title>
+<meta name="description" content="Vocablito допомагає запам’ятати слова з уроків англійської, іспанської та німецької: п’ять хвилин на день, інтервальні повторення, квіз і озвучка. Українською та російською.">
+<meta property="og:title" content="Vocablito: слова з уроку, які залишаються в голові">
+<meta property="og:description" content="П’ять хвилин на день, і нові слова англійської, іспанської чи німецької переходять у довгу пам’ять.">
+<meta property="og:image" content="https://vocablito.com/img/og.png">
+<meta property="og:url" content="https://vocablito.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F4EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14100D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><i class="grain"></i></div>
+
+<header class="top">
+  <a class="brand" href="#top"><img src="img/icon.webp" alt="" width="36" height="36"><span>Vocablito</span></a>
+  <nav class="links">
+    <a href="#how" data-t="nav.how">Як працює</a>
+    <a href="#why" data-t="nav.why">Чому працює</a>
+    <a href="#langs" data-t="nav.langs">Мови</a>
+    <a href="#faq" data-t="nav.faq">Питання</a>
+  </nav>
+  <div class="lang" role="group" aria-label="Мова сайту">
+    <button data-lang="uk" aria-pressed="true">UA</button><button data-lang="ru" aria-pressed="false">RU</button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="pill reveal"><span class="dot"></span><span data-t="hero.pill">Англійська · іспанська · німецька</span></p>
+      <h1 class="reveal" data-t-html="hero.title">Слова з уроку, які <em>залишаються</em> в голові</h1>
+      <p class="lead reveal" data-t="hero.lead">Записуєш нове слово за секунду, а Vocablito сам нагадає його саме тоді, коли воно вже майже забулося. П’ять хвилин на день, і слова переходять у довгу пам’ять.</p>
+      <div class="cta reveal">
+        <a class="store" href="#soon" aria-describedby="soon-note">
+          <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          <span><small data-t="store.small">Незабаром в</small><b>App Store</b></span>
+        </a>
+        <a class="ghost" href="#how" data-t="hero.more">Як це працює</a>
+      </div>
+      <ul class="ticks reveal">
+        <li data-t="tick.1">Без реклами</li>
+        <li data-t="tick.2">Працює без інтернету</li>
+        <li data-t="tick.3">Українською та російською</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual" id="stage">
+      <div class="phone tilt">
+        <div class="island"></div>
+        <div class="status"><span>9:41</span><span class="sb"><i></i><i></i><i></i><i></i></span></div>
+        <div class="screens">
+          <img src="img/card.webp" alt="Нове слово appointment з перекладом і прикладом" class="on">
+          <img src="img/choice.webp" alt="Вправа: обери переклад слова appointment">
+          <img src="img/correct.webp" alt="Правильна відповідь з прикладом у контексті">
+          <img src="img/home.webp" alt="Головний екран з планом тренування на сьогодні">
+        </div>
+      </div>
+      <div class="flip f1"><div class="in"><b>appointment</b><span data-t="fl.1">запис</span></div></div>
+      <div class="flip f2"><div class="in"><b>la mano</b><span data-t="fl.2">рука</span></div></div>
+      <div class="flip f3"><div class="in"><b>gemütlich</b><span data-t="fl.3">затишний</span></div></div>
+      <div class="flip f4"><div class="in"><b>actually</b><span data-t="fl.4">насправді</span></div></div>
+      <div class="streak"><span class="fire">🔥</span><span><b>12</b> <small data-t="streak">днів поспіль</small></span></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+
+  <!-- HOW -->
+  <section id="how" class="section">
+    <p class="kicker reveal" data-t="how.kicker">Як це працює</p>
+    <h2 class="reveal" data-t="how.title">Три кроки, і слово твоє</h2>
+    <div class="steps">
+      <article class="step reveal"><span class="num">1</span><h3 data-t="how.1.t">Записуєш слова прямо на уроці</h3><p data-t="how.1.p">Пишеш як зручно: «la mano рука» або просто слово. Переклад підставиться сам із вбудованого словника.</p></article>
+      <article class="step reveal"><span class="num">2</span><h3 data-t="how.2.t">П’ять хвилин на день</h3><p data-t="how.2.p">Застосунок уже знає, що повторити сьогодні. Коротке тренування з різних вправ: вибір, на слух, письмо, пропуск у реченні.</p></article>
+      <article class="step reveal"><span class="num">3</span><h3 data-t="how.3.t">Слова залишаються надовго</h3><p data-t="how.3.p">Кожне слово повертається через усе довші проміжки: день, тиждень, місяць. Те, що ти вже знаєш, не забирає час.</p></article>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why" class="section why">
+    <p class="kicker reveal" data-t="why.kicker">Чому це працює</p>
+    <h2 class="reveal" data-t="why.title">Не зубріння, а наука про пам’ять</h2>
+    <div class="why-grid">
+      <article class="panel reveal">
+        <h3 data-t="why.1.t">Повторення в потрібний момент</h3>
+        <p data-t="why.1.p">Без повторення нове слово швидко вислизає. Якщо згадати його саме тоді, коли воно починає забуватися, пам’ять щоразу міцнішає, і наступне повторення можна відкласти надовше.</p>
+        <svg class="curve" viewBox="0 0 520 220" role="img" aria-label="Крива забування з повтореннями">
+          <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent2)"/></linearGradient></defs>
+          <line x1="30" y1="190" x2="510" y2="190" class="axis"/><line x1="30" y1="20" x2="30" y2="190" class="axis"/>
+          <path class="forget" d="M30 30 C 80 120, 160 170, 510 182"/>
+          <path class="learn" d="M30 30 C 50 80, 70 100, 95 108 L95 30 C 130 70, 160 90, 200 96 L200 30 C 250 55, 300 70, 340 74 L340 30 C 400 44, 460 52, 510 54"/>
+          <g class="marks"><circle cx="95" cy="30" r="6"/><circle cx="200" cy="30" r="6"/><circle cx="340" cy="30" r="6"/></g>
+          <text x="40" y="212" class="lbl" data-t="why.curve.x">час</text>
+          <text x="400" y="176" class="lbl muted" data-t="why.curve.a">без повторень</text>
+          <text x="400" y="92" class="lbl acc" data-t="why.curve.b">з Vocablito</text>
+        </svg>
+      </article>
+      <article class="panel reveal">
+        <h3 data-t="why.2.t">Згадувати, а не перечитувати</h3>
+        <p data-t="why.2.p">Коли намагаєшся самостійно згадати слово, воно запам’ятовується краще, ніж коли просто дивишся на нього. Тому Vocablito питає в обидва боки: спершу бачиш англійське й згадуєш переклад, згодом бачиш українське й згадуєш англійське.</p>
+        <div class="dir">
+          <div class="chip-card"><small data-t="why.dir.a">впізнати</small><b>borrow</b><span>→</span><b data-t="why.dir.a2">позичати</b></div>
+          <div class="chip-card alt"><small data-t="why.dir.b">згадати</small><b data-t="why.dir.b2">позичати</b><span>→</span><b class="typing">borrow</b></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <p class="kicker reveal" data-t="feat.kicker">Що всередині</p>
+    <h2 class="reveal" data-t="feat.title">Усе для слів, нічого зайвого</h2>
+    <div class="bento">
+      <article class="tile big reveal"><span class="ic">🔊</span><h3 data-t="f.1.t">Озвучка кожного слова й прикладу</h3><p data-t="f.1.p">Слухай вимову скільки завгодно разів, а у вправах на слух вгадуй слово з голосу.</p><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      <article class="tile reveal"><span class="ic">✅</span><h3 data-t="f.2.t">Розумна перевірка</h3><p data-t="f.2.p">Пропущений наголос, умлаут чи одна помилка в літері не рахуються провалом: застосунок покаже, що виправити.</p></article>
+      <article class="tile reveal"><span class="ic">⚡</span><h3 data-t="f.3.t">Квіз за хвилину</h3><p data-t="f.3.p">Перевір себе на всьому словнику або тільки на словах останнього уроку.</p></article>
+      <article class="tile reveal"><span class="ic">📈</span><h3 data-t="f.4.t">Прогрес і серія днів</h3><p data-t="f.4.p">Бачиш, скільки слів уже вивчено, і не хочеш переривати серію.</p></article>
+      <article class="tile reveal"><span class="ic">👩‍🏫</span><h3 data-t="f.5.t">Для заняття з репетитором</h3><p data-t="f.5.p">Познач слова, які хочеш розібрати, і покажи список на уроці.</p></article>
+      <article class="tile big alt reveal"><span class="ic">🔒</span><h3 data-t="f.6.t">Без реклами й стеження</h3><p data-t="f.6.p">Слова зберігаються на твоєму телефоні. Ми не показуємо рекламу й не збираємо аналітику.</p></article>
+    </div>
+  </section>
+
+  <!-- SCREENS -->
+  <section class="section">
+    <p class="kicker reveal" data-t="scr.kicker">Як це виглядає</p>
+    <h2 class="reveal" data-t="scr.title">Спокійно, просто, без відволікань</h2>
+    <div class="gallery" id="gallery">
+      <figure class="reveal"><div class="mini"><img src="img/home.webp" alt="" loading="lazy"></div><figcaption data-t="scr.1">План на сьогодні</figcaption></figure>
+      <figure class="reveal"><div class="mini"><img src="img/card.webp" alt="" loading="lazy"></div><figcaption data-t="scr.2">Нове слово з прикладом</figcaption></figure>
+      <figure class="reveal"><div class="mini"><img src="img/choice.webp" alt="" loading="lazy"></div><figcaption data-t="scr.3">Обери переклад</figcaption></figure>
+      <figure class="reveal"><div class="mini"><img src="img/correct.webp" alt="" loading="lazy"></div><figcaption data-t="scr.4">Слово в контексті</figcaption></figure>
+      <figure class="reveal"><div class="mini"><img src="img/progress.webp" alt="" loading="lazy"></div><figcaption data-t="scr.5">Прогрес і активність</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- LANGS -->
+  <section id="langs" class="section">
+    <p class="kicker reveal" data-t="lang.kicker">Мови</p>
+    <h2 class="reveal" data-t="lang.title">Обирай мову, яку вчиш</h2>
+    <div class="langs">
+      <article class="lang-card en reveal"><span class="flag">🇬🇧</span><h3>English</h3><p data-t="lang.en">Від побутових слів до пасток на кшталт actually, яке зовсім не «актуально».</p><code>borrow · lend</code></article>
+      <article class="lang-card es reveal"><span class="flag">🇪🇸</span><h3>Español</h3><p data-t="lang.es">Іспанська Іспанії: тематичні набори, перевірка наголосів і ñ, синоніми.</p><code>echar de menos</code></article>
+      <article class="lang-card de reveal"><span class="flag">🇩🇪</span><h3>Deutsch</h3><p data-t="lang.de">Артиклі der, die, das та умлаути: застосунок помітить, якщо рід не той.</p><code>das Mädchen</code></article>
+    </div>
+    <p class="note reveal" data-t="lang.note">Переклади українською або російською. У кожного курсу свій словник і свій прогрес.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section faq">
+    <p class="kicker reveal" data-t="faq.kicker">Питання</p>
+    <h2 class="reveal" data-t="faq.title">Часті питання</h2>
+    <details class="reveal"><summary data-t="q.1">Коли можна завантажити?</summary><p data-t="a.1">Vocablito зараз на фінальному тестуванні й незабаром з’явиться в App Store для iPhone.</p></details>
+    <details class="reveal"><summary data-t="q.2">Чи потрібен інтернет?</summary><p data-t="a.2">Ні. Слова, повторення й озвучка працюють на телефоні без мережі.</p></details>
+    <details class="reveal"><summary data-t="q.3">Звідки беруться переклади?</summary><p data-t="a.3">Вбудований словник підказує переклад, коли ти додаєш слово. Його завжди можна змінити на свій.</p></details>
+    <details class="reveal"><summary data-t="q.4">Чи підійде для початківців?</summary><p data-t="a.4">Так. Можна почати з готових слів: приклади в них рівня A1-A2.</p></details>
+    <details class="reveal"><summary data-t="q.5">Мої дані в безпеці?</summary><p><span data-t="a.5">Слова зберігаються на твоєму телефоні. Ми не продаємо й не передаємо дані.</span> <a href="privacy.html" data-t="a.5l">Політика конфіденційності</a></p></details>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final reveal" id="soon">
+    <img src="img/icon.webp" alt="" width="96" height="96" class="final-icon">
+    <h2 data-t="end.title">Почни з п’яти хвилин сьогодні</h2>
+    <p id="soon-note" data-t="end.p">Vocablito незабаром в App Store. Напиши нам, і ми повідомимо, щойно він вийде.</p>
+    <a class="btn" href="mailto:support@vocablito.com?subject=Vocablito" data-t="end.btn">Повідомте мене</a>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>© 2026 Vocablito</span>
+  <a href="privacy.html" data-t="foot.privacy">Конфіденційність</a>
+  <a href="support.html" data-t="foot.support">Підтримка</a>
+  <a href="mailto:support@vocablito.com">support@vocablito.com</a>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
