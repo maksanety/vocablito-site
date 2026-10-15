@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Слова з уроку · Vocablito</title>
+<meta name="description" content="Список слів з уроку для Vocablito.">
+<meta property="og:title" content="Слова з уроку · Vocablito">
+<meta property="og:description" content="Відкрий список у Vocablito, і слова з уроку будуть у твоєму словнику.">
+<meta property="og:image" content="https://vocablito.com/img/og.png">
+<meta name="theme-color" content="#F7F4EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14100D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../icon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4EF; --card: #fff; --ink: #1B1612; --muted: #6E665D; --line: rgba(27, 22, 18, .1);
+  --accent: #C9500A; --soft: #FCEBDD; --green: #2E8B57; --danger: #B3261E; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14100D; --card: #241C16; --ink: #F6F1EA; --muted: #B3A99D; --line: rgba(255, 255, 255, .1);
+    --accent: #FF8A3D; --soft: #3A2414; --green: #5CC08A; --danger: #FF8A80; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14100D; --card: #241C16; --ink: #F6F1EA; --muted: #B3A99D; --line: rgba(255, 255, 255, .1);
+  --accent: #FF8A3D; --soft: #3A2414; --green: #5CC08A; --danger: #FF8A80; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 500 17px/1.55 Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 640px; margin: 0 auto; padding: 18px 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; color: inherit; }
+.brand img { width: 32px; height: 32px; border-radius: 9px; }
+.lang { display: flex; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+.lang button { border: 0; background: none; color: var(--muted); font: 700 13px Manrope, sans-serif; padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+main { max-width: 640px; margin: 0 auto; padding: 8px 16px 64px; }
+h1 { font: 700 clamp(26px, 6vw, 36px)/1.15 Unbounded, Manrope, sans-serif; letter-spacing: -.02em; margin: 8px 0 6px; overflow-wrap: anywhere; }
+.muted { color: var(--muted); }
+.small { font-size: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin: 16px 0; }
+.words { list-style: none; margin: 0; padding: 0; }
+.words li { display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 10px 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.words li:last-child { border-bottom: 0; }
+.words b { font-weight: 700; }
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 54px; border: 0; border-radius: 16px;
+  background: var(--accent); color: #fff; font: 800 17px Manrope, sans-serif; text-decoration: none; cursor: pointer; margin-top: 10px;
+}
+.btn.secondary { background: var(--soft); color: var(--accent); }
+label { display: block; font-weight: 700; font-size: 14px; margin: 14px 0 6px; }
+input, select, textarea {
+  width: 100%; font: 500 16px/1.5 Manrope, sans-serif; color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 12px; padding: 12px;
+}
+textarea { min-height: 220px; resize: vertical; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.error { color: var(--danger); font-weight: 700; }
+.ok { color: var(--green); font-weight: 700; }
+[hidden] { display: none !important; }
+footer { text-align: center; margin-top: 32px; }
+footer a { color: var(--muted); margin: 0 8px; }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../"><img src="../img/icon.webp" alt="" width="32" height="32"><span>Vocablito</span></a>
+  <div class="lang" role="group" aria-label="Мова сторінки">
+    <button data-lang="uk" aria-pressed="true">UA</button><button data-lang="ru" aria-pressed="false">RU</button>
+  </div>
+</header>
+
+<main>
+  <!-- A received list -->
+  <section id="view" hidden>
+    <p class="muted small" data-t="view.kicker">Слова з уроку</p>
+    <h1 id="title"></h1>
+    <p class="muted" id="summary"></p>
+    <a class="btn" id="open" href="#" data-t="view.open">Відкрити у Vocablito</a>
+    <p class="muted small" data-t="view.note">У застосунку можна перевірити кожне слово перед додаванням.</p>
+    <div class="card"><ul class="words" id="words"></ul></div>
+    <button class="btn secondary" id="copyWords" type="button" data-t="view.copy">Скопіювати список</button>
+    <p class="muted small" data-t="view.noApp">Ще немає застосунку? Vocablito допомагає запам’ятати слова з уроку за 5-10 хвилин на день.</p>
+    <a class="btn secondary" href="../" data-t="view.about">Про Vocablito</a>
+  </section>
+
+  <!-- Broken link -->
+  <section id="broken" hidden>
+    <h1 data-t="broken.title">Посилання пошкоджене</h1>
+    <p class="muted" data-t="broken.text">Схоже, посилання скопіювалося не повністю. Попроси надіслати його ще раз.</p>
+  </section>
+
+  <!-- Composer for a tutor -->
+  <section id="make" hidden>
+    <h1 data-t="make.title">Список слів для учня</h1>
+    <p class="muted" data-t="make.lead">Встав слова з уроку, і ти отримаєш посилання. Учень відкриє його, і слова з’являться у Vocablito. Слова зберігаються лише в самому посиланні, на сервер вони не потрапляють.</p>
+    <form class="card" id="form" novalidate>
+      <label for="name" data-t="make.name">Назва (необов’язково)</label>
+      <input id="name" maxlength="80" autocomplete="off" data-t-ph="make.namePh" placeholder="Урок 12: їжа">
+      <div class="row">
+        <div>
+          <label for="target" data-t="make.target">Мова, яку вчать</label>
+          <select id="target">
+            <option value="en" data-t="lang.en">Англійська</option>
+            <option value="es" data-t="lang.es">Іспанська</option>
+            <option value="de" data-t="lang.de">Німецька</option>
+          </select>
+        </div>
+        <div>
+          <label for="base" data-t="make.base">Мова перекладу</label>
+          <select id="base">
+            <option value="uk" data-t="lang.uk">Українська</option>
+            <option value="ru" data-t="lang.ru">Російська</option>
+          </select>
+        </div>
+      </div>
+      <label for="text" data-t="make.words">Слова, одне в рядку</label>
+      <textarea id="text" spellcheck="false" data-t-ph="make.wordsPh" placeholder="apple - яблуко&#10;look forward to - чекати з нетерпінням&#10;borrow"></textarea>
+      <p class="muted small" data-t="make.hint">Переклад після тире, табуляції або «=». Можна й без перекладу: застосунок підкаже його сам. До 200 слів.</p>
+      <p class="error" id="formError" hidden></p>
+      <button class="btn" type="submit" data-t="make.go">Створити посилання</button>
+    </form>
+    <div class="card" id="result" hidden>
+      <p class="ok" id="resultCount"></p>
+      <input id="link" readonly aria-label="Посилання">
+      <button class="btn" id="share" type="button" data-t="make.share">Надіслати</button>
+      <button class="btn secondary" id="copy" type="button" data-t="make.copy">Скопіювати посилання</button>
+      <a class="btn secondary" id="preview" href="#" data-t="make.preview">Подивитися, як побачить учень</a>
+    </div>
+  </section>
+
+  <footer class="small"><a href="../">Vocablito</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></footer>
+</main>
+
+<script>
+(() => {
+  'use strict';
+  const MAX_WORDS = 200, MAX_TERM = 80, MAX_TR = 160, MAX_TITLE = 80;
+  const TARGETS = ['en', 'es', 'de'], BASES = ['uk', 'ru'];
+
+  const RU = {
+    'view.kicker': 'Слова с урока', 'view.open': 'Открыть в Vocablito',
+    'view.note': 'В приложении можно проверить каждое слово перед добавлением.', 'view.copy': 'Скопировать список',
+    'view.noApp': 'Ещё нет приложения? Vocablito помогает запомнить слова с урока за 5-10 минут в день.', 'view.about': 'О Vocablito',
+    'broken.title': 'Ссылка повреждена', 'broken.text': 'Похоже, ссылка скопировалась не полностью. Попроси прислать её ещё раз.',
+    'make.title': 'Список слов для ученика',
+    'make.lead': 'Вставь слова с урока и получишь ссылку. Ученик откроет её, и слова появятся в Vocablito. Слова хранятся только в самой ссылке, на сервер они не попадают.',
+    'make.name': 'Название (необязательно)', 'make.namePh': 'Урок 12: еда', 'make.target': 'Язык, который учат', 'make.base': 'Язык перевода',
+    'make.words': 'Слова, по одному в строке', 'make.wordsPh': 'apple - яблоко\nlook forward to - ждать с нетерпением\nborrow',
+    'make.hint': 'Перевод после тире, табуляции или «=». Можно и без перевода: приложение подскажет его само. До 200 слов.',
+    'make.go': 'Создать ссылку', 'make.share': 'Отправить', 'make.copy': 'Скопировать ссылку', 'make.preview': 'Посмотреть, как увидит ученик',
+    'lang.en': 'Английский', 'lang.es': 'Испанский', 'lang.de': 'Немецкий', 'lang.uk': 'Украинский', 'lang.ru': 'Русский',
+  };
+  const UK = {};
+  document.querySelectorAll('[data-t]').forEach((el) => (UK[el.dataset.t] = el.textContent));
+  document.querySelectorAll('[data-t-ph]').forEach((el) => (UK[el.dataset.tPh] = el.placeholder));
+  const TEXT = {
+    uk: {
+      words: (n) => `${n} ${plural(n, 'слово', 'слова', 'слів')}`, summary: (lang, n) => `${lang} · ${n}`,
+      title: 'Слова з уроку', copied: 'Скопійовано', ready: (n) => `Готово: ${n}. Надішли посилання учню.`,
+      empty: 'Додай хоча б одне слово.', tooMany: 'Забагато слів: до 200 в одному посиланні.',
+      langs: { en: 'Англійська', es: 'Іспанська', de: 'Німецька' }, share: 'Слова з уроку у Vocablito',
+    },
+    ru: {
+      words: (n) => `${n} ${plural(n, 'слово', 'слова', 'слов')}`, summary: (lang, n) => `${lang} · ${n}`,
+      title: 'Слова с урока', copied: 'Скопировано', ready: (n) => `Готово: ${n}. Отправь ссылку ученику.`,
+      empty: 'Добавь хотя бы одно слово.', tooMany: 'Слишком много слов: до 200 в одной ссылке.',
+      langs: { en: 'Английский', es: 'Испанский', de: 'Немецкий' }, share: 'Слова с урока в Vocablito',
+    },
+  };
+  function plural(n, one, few, many) {
+    const m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+    return many;
+  }
+
+  // ---------- base64url + UTF-8 (same format as the app) ----------
+  function encode(s) {
+    const bytes = new TextEncoder().encode(s);
+    let bin = '';
+    bytes.forEach((b) => (bin += String.fromCharCode(b)));
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function decode(data) {
+    if (!/^[A-Za-z0-9_-]+$/.test(data) || data.length % 4 === 1 || data.length > 40000) return null;
+    try {
+      const bin = atob(data.replace(/-/g, '+').replace(/_/g, '/'));
+      return new TextDecoder('utf-8', { fatal: true }).decode(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
+    } catch (e) { return null; }
+  }
+  function clean(v, max) {
+    if (typeof v !== 'string') return null;
+    const s = v.replace(/[\u0000-\u001f\u007f\u200b-\u200f\u2028-\u202e\u2066-\u2069]/g, ' ').replace(/\s+/g, ' ').trim();
+    return s.length <= max ? s : null;
+  }
+  function parseList(data) {
+    const json = decode(data);
+    if (json == null) return null;
+    let o;
+    try { o = JSON.parse(json); } catch (e) { return null; }
+    if (!o || o.v !== 1 || !TARGETS.includes(o.t) || !BASES.includes(o.b) || !Array.isArray(o.w)) return null;
+    const title = o.n == null ? '' : clean(o.n, MAX_TITLE);
+    if (title == null || !o.w.length || o.w.length > MAX_WORDS) return null;
+    const words = [];
+    for (const item of o.w) {
+      if (!Array.isArray(item) || item.length < 1 || item.length > 2) return null;
+      const term = clean(item[0], MAX_TERM), tr = item.length > 1 ? clean(item[1], MAX_TR) : '';
+      if (!term || tr == null) return null;
+      words.push([term, tr]);
+    }
+    return { target: o.t, base: o.b, title, words };
+  }
+
+  // ---------- language ----------
+  let lang = 'uk';
+  function setLang(next) {
+    lang = next;
+    const dict = next === 'ru' ? RU : UK;
+    document.documentElement.lang = next;
+    document.querySelectorAll('[data-t]').forEach((el) => { const v = dict[el.dataset.t]; if (v != null) el.textContent = v; });
+    document.querySelectorAll('[data-t-ph]').forEach((el) => { const v = dict[el.dataset.tPh]; if (v != null) el.placeholder = v; });
+    document.querySelectorAll('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === next)));
+    try { localStorage.setItem('vocablito-lang', next); } catch (e) { /* private mode */ }
+    render();
+  }
+
+  const $ = (id) => document.getElementById(id);
+  let list = null;
+  let made = null;
+
+  function render() {
+    const T = TEXT[lang];
+    if (list) {
+      $('title').textContent = list.title || T.title;
+      $('summary').textContent = T.summary(T.langs[list.target], T.words(list.words.length));
+      document.title = `${list.title || T.title} · Vocablito`;
+    }
+    if (made) $('resultCount').textContent = T.ready(T.words(made.count));
+  }
+
+  function showList(data) {
+    list = parseList(data);
+    $('make').hidden = true;
+    $('view').hidden = !list;
+    $('broken').hidden = !!list;
+    if (!list) { document.title = 'Vocablito'; return; }
+    const ul = $('words');
+    ul.textContent = '';
+    for (const [term, tr] of list.words) {
+      const li = document.createElement('li');
+      const b = document.createElement('b');
+      b.textContent = term;
+      li.appendChild(b);
+      if (tr) { const s = document.createElement('span'); s.className = 'muted'; s.textContent = tr; li.appendChild(s); }
+      ul.appendChild(li);
+    }
+    $('open').href = `palabrita://list?d=${data}`;
+    render();
+  }
+
+  // ---------- composer ----------
+  const SEPS = ['\t', ' — ', ' – ', ' - ', ' = ', '—', '–', '=', ': '];
+  function splitLine(line) {
+    for (const sep of SEPS) {
+      const i = line.indexOf(sep);
+      if (i > 0) return [line.slice(0, i), line.slice(i + sep.length)];
+    }
+    return [line, ''];
+  }
+  $('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const T = TEXT[lang];
+    const words = [];
+    for (const raw of $('text').value.split(/\r?\n/)) {
+      const line = raw.replace(/^\s*(\d+[.)]|[•*·-])\s+/, '').trim();
+      if (!line) continue;
+      const [a, b] = splitLine(line);
+      const term = clean(a, 1000).slice(0, MAX_TERM), tr = clean(b, 1000).slice(0, MAX_TR);
+      if (term) words.push(tr ? [term, tr] : [term]);
+    }
+    const err = $('formError');
+    err.hidden = true;
+    if (!words.length) { err.textContent = T.empty; err.hidden = false; return; }
+    if (words.length > MAX_WORDS) { err.textContent = T.tooMany; err.hidden = false; return; }
+    const payload = { v: 1, t: $('target').value, b: $('base').value, n: clean($('name').value, 1000).slice(0, MAX_TITLE), w: words };
+    const url = `${location.origin}${location.pathname}#${encode(JSON.stringify(payload))}`;
+    made = { url, count: words.length, title: payload.n };
+    $('link').value = url;
+    $('preview').href = url;
+    $('result').hidden = false;
+    $('share').hidden = !navigator.share;
+    render();
+    $('result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  async function copy(text, button) {
+    try { await navigator.clipboard.writeText(text); } catch (e) { $('link').select(); document.execCommand('copy'); }
+    const old = button.textContent;
+    button.textContent = TEXT[lang].copied;
+    setTimeout(() => (button.textContent = old), 1500);
+  }
+  $('copy').addEventListener('click', () => made && copy(made.url, $('copy')));
+  $('share').addEventListener('click', () => {
+    if (made && navigator.share) navigator.share({ title: made.title || TEXT[lang].share, text: made.title || TEXT[lang].share, url: made.url }).catch(() => {});
+  });
+  $('copyWords').addEventListener('click', () => list && copy(list.words.map(([a, b]) => (b ? `${a} - ${b}` : a)).join('\n'), $('copyWords')));
+
+  // ---------- route by the hash ----------
+  function route() {
+    const data = location.hash.slice(1);
+    if (data) showList(data);
+    else { list = null; document.title = 'Vocablito'; $('view').hidden = true; $('broken').hidden = true; $('make').hidden = false; }
+  }
+  addEventListener('hashchange', route);
+
+  let saved = null;
+  try { saved = localStorage.getItem('vocablito-lang'); } catch (e) { /* private mode */ }
+  const guess = saved || ((navigator.language || '').toLowerCase().startsWith('ru') ? 'ru' : 'uk');
+  $('base').value = guess;
+  route();
+  setLang(guess);
+  document.querySelectorAll('.lang button').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+})();
+</script>
+</body>
+</html>
