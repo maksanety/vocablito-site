@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["5B662MFK6T.com.maksanety.palabrita"],
+        "components": [
+          { "/": "/l/*", "comment": "Word lists from tutors: the list itself is in the # part of the link" },
+          { "/": "/l", "comment": "Same page without the trailing slash" }
+        ]
+      }
+    ]
+  }
+}
