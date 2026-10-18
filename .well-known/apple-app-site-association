@@ -2,10 +2,26 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["5B662MFK6T.com.maksanety.palabrita"],
+        "appIDs": [
+          "5B662MFK6T.com.maksanety.palabrita"
+        ],
         "components": [
-          { "/": "/l/*", "comment": "Word lists from tutors: the list itself is in the # part of the link" },
-          { "/": "/l", "comment": "Same page without the trailing slash" }
+          {
+            "/": "/l/*",
+            "comment": "Word lists from tutors: the list itself is in the # part of the link"
+          },
+          {
+            "/": "/l",
+            "comment": "Same page without the trailing slash"
+          },
+          {
+            "/": "/t/*",
+            "comment": "Tutor invitations: the code is in the # part of the link"
+          },
+          {
+            "/": "/t",
+            "comment": "Same page without the trailing slash"
+          }
         ]
       }
     ]

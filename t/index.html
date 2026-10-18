@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Запрошення від репетитора · Vocablito</title>
+<meta property="og:title" content="Запрошення від репетитора · Vocablito">
+<meta property="og:description" content="Підключися до репетитора у Vocablito: слова з уроку прийдуть прямо в застосунок.">
+<meta property="og:image" content="https://vocablito.com/img/og.png">
+<meta name="theme-color" content="#F7F4EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14100D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #F7F4EF; --card: #fff; --ink: #1B1612; --muted: #6E665D; --line: rgba(27, 22, 18, .1); --accent: #C9500A; --soft: #FCEBDD; color-scheme: light; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #14100D; --card: #241C16; --ink: #F6F1EA; --muted: #B3A99D; --line: rgba(255, 255, 255, .1); --accent: #FF8A3D; --soft: #3A2414; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #14100D; --card: #241C16; --ink: #F6F1EA; --muted: #B3A99D; --line: rgba(255, 255, 255, .1); --accent: #FF8A3D; --soft: #3A2414; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 500 17px/1.55 Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+header { display: flex; align-items: center; justify-content: space-between; max-width: 560px; margin: 0 auto; padding: 18px 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; color: inherit; }
+.brand img { width: 32px; height: 32px; border-radius: 9px; }
+.lang { display: flex; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+.lang button { border: 0; background: none; color: var(--muted); font: 700 13px Manrope, sans-serif; padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+main { max-width: 560px; margin: 0 auto; padding: 8px 16px 64px; text-align: center; }
+h1 { font: 700 clamp(24px, 6vw, 32px)/1.2 Unbounded, Manrope, sans-serif; letter-spacing: -.02em; margin: 24px 0 8px; }
+.muted { color: var(--muted); }
+.code { font: 800 40px/1 Manrope, sans-serif; letter-spacing: 8px; color: var(--accent); margin: 24px 0 8px; user-select: all; }
+.btn { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 54px; border: 0; border-radius: 16px; background: var(--accent); color: #fff; font: 800 17px Manrope, sans-serif; text-decoration: none; margin-top: 16px; cursor: pointer; }
+.btn.secondary { background: var(--soft); color: var(--accent); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin: 20px 0; text-align: left; }
+ol { margin: 0; padding-left: 20px; }
+[hidden] { display: none !important; }
+footer { margin-top: 32px; font-size: 14px; }
+footer a { color: var(--muted); margin: 0 8px; }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../"><img src="../img/icon.webp" alt="" width="32" height="32"><span>Vocablito</span></a>
+  <div class="lang" role="group" aria-label="Мова сторінки">
+    <button data-lang="uk" aria-pressed="true">UA</button><button data-lang="ru" aria-pressed="false">RU</button>
+  </div>
+</header>
+<main>
+  <section id="ok" hidden>
+    <h1 data-t="title">Тебе запрошує репетитор</h1>
+    <p class="muted" data-t="lead">Підключись, і слова з уроку прийдуть прямо у Vocablito, а репетитор бачитиме, що вже вийшло, а що варто повторити.</p>
+    <div class="code" id="code"></div>
+    <a class="btn" id="open" href="#" data-t="open">Відкрити у Vocablito</a>
+    <div class="card">
+      <p style="margin-top:0"><b data-t="manualTitle">Якщо кнопка не відкрила застосунок</b></p>
+      <ol>
+        <li data-t="step1">Встанови Vocablito й увійди в обліковий запис.</li>
+        <li data-t="step2">Налаштування → Мій репетитор.</li>
+        <li data-t="step3">Введи код вище.</li>
+      </ol>
+    </div>
+    <a class="btn secondary" href="../" data-t="about">Про Vocablito</a>
+  </section>
+  <section id="bad" hidden>
+    <h1 data-t="badTitle">Посилання неповне</h1>
+    <p class="muted" data-t="badText">Попроси репетитора надіслати його ще раз або ввести код вручну.</p>
+  </section>
+  <footer><a href="../">Vocablito</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></footer>
+</main>
+<script>
+(() => {
+  'use strict';
+  const RU = {
+    title: 'Тебя приглашает репетитор',
+    lead: 'Подключись, и слова с урока придут прямо в Vocablito, а репетитор будет видеть, что уже получилось, а что стоит повторить.',
+    open: 'Открыть в Vocablito', manualTitle: 'Если кнопка не открыла приложение',
+    step1: 'Установи Vocablito и войди в аккаунт.', step2: 'Настройки → Мой репетитор.', step3: 'Введи код выше.',
+    about: 'О Vocablito', badTitle: 'Ссылка неполная', badText: 'Попроси репетитора отправить её ещё раз или ввести код вручную.',
+  };
+  const UK = {};
+  document.querySelectorAll('[data-t]').forEach((el) => (UK[el.dataset.t] = el.textContent));
+  function setLang(next) {
+    const dict = next === 'ru' ? RU : UK;
+    document.documentElement.lang = next;
+    document.querySelectorAll('[data-t]').forEach((el) => { const v = dict[el.dataset.t]; if (v != null) el.textContent = v; });
+    document.querySelectorAll('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === next)));
+    try { localStorage.setItem('vocablito-lang', next); } catch (e) { /* private mode */ }
+  }
+  const code = location.hash.slice(1).toUpperCase();
+  const valid = /^[A-Z2-9]{8}$/.test(code);
+  document.getElementById('ok').hidden = !valid;
+  document.getElementById('bad').hidden = valid;
+  if (valid) {
+    document.getElementById('code').textContent = code;
+    document.getElementById('open').href = `palabrita://my-tutor?code=${code}`;
+  }
+  let saved = null;
+  try { saved = localStorage.getItem('vocablito-lang'); } catch (e) { /* private mode */ }
+  setLang(saved || ((navigator.language || '').toLowerCase().startsWith('ru') ? 'ru' : 'uk'));
+  document.querySelectorAll('.lang button').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+})();
+</script>
+</body>
+</html>
